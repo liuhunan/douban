@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "7af87874-76a6-4994-a663-c8ae29b17d41",
+		"name": "Hi Translate接口测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "one",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "99eb3463-4b15-4af0-8d94-25700a17f952",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"resource_name\", data[\"resource_name\"]);",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e81546b8-c85c-4b26-ab61-67a2855c7407",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    console.log(pm.response.tostring)",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "resource",
+						"value": "{{resource_name}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.talpaos.com/translate-language?resource={{resource_name}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"talpaos",
+						"com"
+					],
+					"path": [
+						"translate-language"
+					],
+					"query": [
+						{
+							"key": "resource",
+							"value": "{{resource_name}}"
+						}
+					]
+				},
+				"description": "Get supported languages"
+			},
+			"response": []
+		},
+		{
+			"name": "two",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.talpaos.com/translate-language?resource=google",
+					"protocol": "https",
+					"host": [
+						"api",
+						"talpaos",
+						"com"
+					],
+					"path": [
+						"translate-language"
+					],
+					"query": [
+						{
+							"key": "resource",
+							"value": "google"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
